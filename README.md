@@ -10,6 +10,12 @@ Lab 4: Due mm/dd/2022
 
 Lab 5: Due mm/dd/2022
 
+Lab 6: Due mm/dd/2022
+
+# Link to the Final Project for FPGA
+
+* Link not available yet
+
 # Resources
 
 PYNQ-Z1 Reference Manual: https://reference.digilentinc.com/reference/programmable-logic/pynq-z1/reference-manual
