@@ -8,7 +8,7 @@ Lab 3: Due mm/dd/2022
 
 Lab 4: Due mm/dd/2022
 
-Lab 5: Due mm/dd/2022s
+Lab 5: Due mm/dd/2022
 
 # Resources
 
