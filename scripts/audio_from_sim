@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""
+This script converts a raw square wave signal from a Verilog simulation into a .wav audio file for playback.
+
+Usage: ./scripts/audio_from_sim lab3/sim/codes.txt
+
+This script will generate a file named output.wav that can be played using 'play'
+Playback: play output.wav
+"""
+
+import wave
+import random
+import struct
+import sys
+
+filepath = sys.argv[1]
+values = []
+
+def renormalize(n, range1, range2):
+    delta1 = range1[1] - range1[0]
+    delta2 = range2[1] - range2[0]
+    return (delta2 * (n - range1[0]) / delta1) + range2[0]
+
+with open(filepath, 'r') as samples_file:
+    values = [int(line.rstrip('\n').strip()) for line in samples_file]
+    values_scaled = [renormalize(s, (0, 1023), (-2**15, 2**15-1)) for s in values]
+    #max_value = max(values)
+    #scaled_values = [((val*40000) / max_value) + -20000 for val in values]
+    packed_values = [struct.pack('<h', int(v)) for v in values_scaled]
+    output_wav = wave.open('output.wav', 'w')
+    sample_rate = int(125e6 / 1024)
+    # nchannels (1 - mono), sampwidth (2 bytes per sample), framerate (~ 122 kHz), nframes (0)
+    output_wav.setparams((1, 2, sample_rate, 0, 'NONE', 'not compressed'))
+    output_wav.writeframes(b''.join(packed_values))
+    output_wav.close()
+sys.exit(0)

@@ -1,0 +1,10 @@
+build
+*.fst
+*.tbi
+csrc
+ucli.key
+*.vpd
+*.tb
+*.tb.daidir
+*.wav
+*.txt
