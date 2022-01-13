@@ -1,16 +1,16 @@
 # EECS151/251A FPGA Labs SP21
 
-Lab 1: Due mm/dd/2022
+Lab 1: Due 1/28/2022
 
-Lab 2: Due mm/dd/2022
+Lab 2: 
 
-Lab 3: Due mm/dd/2022
+Lab 3: 
 
-Lab 4: Due mm/dd/2022
+Lab 4: 
 
-Lab 5: Due mm/dd/2022
+Lab 5: 
 
-Lab 6: Due mm/dd/2022
+Lab 6: 
 
 # Link to the Final Project for FPGA
 
