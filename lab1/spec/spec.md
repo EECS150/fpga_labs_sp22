@@ -158,7 +158,7 @@ The lab and project files are on a GitHub git repository provided by the staff.
 
 Run this in your `eecs151-xxx` home directory:
 ```shell
-git clone git@github.com:EECS150/fpga_labs_sp22.git
+git clone https://github.com/EECS150/fpga_labs_sp22
 ```
 
 Whenever a new lab is released, you should only need to type `git pull` (while you are in the fpga_labs_sp22 folder) to retrieve the new files.
