@@ -425,7 +425,7 @@ The following reports are particularly important and you should pay attention to
 You will often find the `.log` (`build/synth/synth.log`, `build/impl/impl.log`) files helpful if you suspect Vivado is optimizing out a signal or if there are unexpected warnings.
 
 ## Lab Deliverables
-### Lab Checkoff (due: 11PM, Friday Jan 28th, 2022)
+### Lab Checkoff (due: next lab)
 - Please submit answers for the questions in [Understanding Your FPGA](#user-content-understanding-your-fpga) to the [Gradescope assignment].
 
 To checkoff for this lab, have these things ready to show the TA:
