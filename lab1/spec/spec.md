@@ -44,8 +44,8 @@ Log in to a lab machine by SSHing with your class account `eecs151-xxx`.
 ssh eecs151-xxx@c111-2.eecs.berkeley.edu
 ```
 ##### SSH from off-campus network
-You need to connect via a Berkeley VPN before you can access the lab machines via ssh
-Please visit:https://security.berkeley.edu/services/bsecure/bsecure-remote-access-vpn and scroll down to "How to Get Started" section if you haven't configured the Berkeley VPN before.
+You need to connect via a Berkeley VPN before you can access the lab machines via ssh.
+Please visit: https://security.berkeley.edu/services/bsecure/bsecure-remote-access-vpn and scroll down to "How to Get Started" section if you haven't configured the Berkeley VPN before.
 
 If you are still unable to ssh, try setting the VPN Gateway to "Library Access and Full Tunnel".
 
