@@ -1,6 +1,6 @@
 # EECS151/251A FPGA Labs SP21
 
-Lab 1: Due 1/28/2022
+Lab 1: Due next lab (1/26, 1/27)
 
 Lab 2: 
 
