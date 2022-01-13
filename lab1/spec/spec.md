@@ -155,11 +155,11 @@ Run this in your `eecs151-xxx` home directory:
 git clone git@github.com:EECS150/fpga_labs_sp22.git
 ```
 
-Whenever a new lab is released, you should only need to `git pull` to retrieve the new files.
+Whenever a new lab is released, you should only need to type `git pull` (while you are in the fpga_labs_sp22 folder) to retrieve the new files.
 If there are any updates, `git pull` will fetch the changes and merge them in.
 
-You can create your own repository to store your lab code, but make sure the repo is private.
-Later on, each team will receive their own private repo for the final project, and you will be able to push and pull from that.
+**You can create your own repository using your own github account to store your lab code, but make sure the repo is private.**
+Later in the semester, each team will be assigned a private repo **for the final project**, and you will be able to push to/pull from that.
 
 ## Our Development Platform - Xilinx PYNQ-Z1
 
