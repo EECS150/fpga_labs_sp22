@@ -432,17 +432,20 @@ You will often find the `.log` (`build/synth/synth.log`, `build/impl/impl.log`) 
 
 ## Lab Deliverables
 ### Lab Checkoff (due: next lab)
-- Please submit answers for the questions in [Understanding Your FPGA](#user-content-understanding-your-fpga) to the [Gradescope assignment].
+- Please submit answers for the questions in [Understanding Your FPGA](#user-content-understanding-your-fpga) to the [**Gradescope assignment**].
 
 To checkoff for this lab, have these things ready to show the TA:
   - Demonstrate that you can generate a bitstream from the given sample code using Vivado. In addition, please show that you can program your FPGA board correctly.
   - Modify the sample code to implement a 4-input logic function of your choice. Use the four buttons (`BUTTONS[3:0]`) as inputs, and the the 2nd LED as output (`LEDS[1]`). Demonstrate that your logic circuit works correctly on the FPGA board.
 
 *Note*: You can declare wires in Verilog to hold intermediate boolean signals and drive them using `and` and `or` gates.
+*Example：*
 ```verilog
 input in1, in2, in3;
 output out;
+
 wire a, b;
+
 and(a, in1, in2);
 or(b, a, in3);
 and(out, b, a);
