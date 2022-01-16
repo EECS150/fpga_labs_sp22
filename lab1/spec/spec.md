@@ -116,6 +116,8 @@ Open `x2go`, create new session with the following settings (use your `eecs151-x
 Click the session on the right bar to start it, and you should see a CentOS Linux desktop environment.
 This desktop is running on the lab machine of your choice and is being forwarded to you by `x2go`.
 
+#### (For best compatibility, please use X2go rather than NoMachine to remotely log in)
+
 ## Getting Familiar with our Development Environment
 
 ### Linux Basics
