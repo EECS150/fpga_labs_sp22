@@ -18,6 +18,10 @@ Lab 6:
 
 * Link not available yet
 
+# Course Website
+
+https://inst.eecs.berkeley.edu/~eecs151/sp22/
+
 # Resources
 
 PYNQ-Z1 Reference Manual: https://reference.digilentinc.com/reference/programmable-logic/pynq-z1/reference-manual
