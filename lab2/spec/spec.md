@@ -3,7 +3,7 @@
 Prof. Bora Nikolic
 </p>
 <p align="center">
-TAs: Alisha Menon, Zhenghan Lin, Charles Hong, Vighnesh Iyer
+TAs: Alisha Menon, Yikuan Chen, Seah Kim
 </p>
 <p align="center">
 Department of Electrical Engineering and Computer Science
@@ -16,9 +16,9 @@ College of Engineering, University of California, Berkeley
 Make sure that you have gone through and completed the steps involved in Lab 1.
 Let the TA know if you are not signed up for this class on Piazza or if you do not have a class account (`eecs151-xxx`), so we can get that sorted out.
 
-To fetch the skeleton files for this lab, `cd` to the git repository (`fpga_labs_fa21`) that you had cloned in the first lab and execute the command `git pull`.
+To fetch the skeleton files for this lab, `cd` to the git repository (`fpga_labs_sp22`) that you had cloned in the first lab and execute the command `git pull`.
 
-Go through the [Verilog Primer Slides](http://inst.eecs.berkeley.edu/~eecs151/fa21/files/verilog/Verilog_Primer_Slides.pdf); you should feel somewhat comfortable with the basics of Verilog to complete this lab.
+Go through the [Verilog Primer Slides](http://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/Verilog_Primer_Slides.pdf); you should feel somewhat comfortable with the basics of Verilog to complete this lab.
 
 Join our [class Slack workspace](https://piazza.com/class/ksp46zb1zfq1u4?cid=50).
 We will open a channel for you to ask questions live during each FPGA lab session.
@@ -26,7 +26,7 @@ We will open a channel for you to ask questions live during each FPGA lab sessio
 ## A Structural and Behavioral Adder Design
 
 ### Build a Structural 14-bit Adder
-To help you with this task, please refer to the `Code Generation with for-generate loops` slide in the [Verilog Primer Slides](http://inst.eecs.berkeley.edu/~eecs151/fa21/files/verilog/Verilog_Primer_Slides.pdf) (slide 35).
+To help you with this task, please refer to the `Code Generation with for-generate loops` slide in the [Verilog Primer Slides](http://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/Verilog_Primer_Slides.pdf) (slide 35).
 
 Open `lab2/src/full_adder.v` and **fill in the logic** to produce the full adder outputs from the inputs.
 
