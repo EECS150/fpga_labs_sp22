@@ -18,7 +18,7 @@ Let the TA know if you are not signed up for this class on Piazza or if you do n
 
 To fetch the skeleton files for this lab, `cd` to the git repository (`fpga_labs_sp22`) that you had cloned in the first lab and execute the command `git pull`.
 
-Go through the [Verilog Primer Slides](http://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/Verilog_Primer_Slides.pdf); you should feel somewhat comfortable with the basics of Verilog to complete this lab.
+Go through the [Verilog Primer Slides wrong link please edit](http://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/Verilog_Primer_Slides.pdf); you should feel somewhat comfortable with the basics of Verilog to complete this lab.
 
 Join our [class Slack workspace](https://piazza.com/class/ksp46zb1zfq1u4?cid=50).
 We will open a channel for you to ask questions live during each FPGA lab session.
