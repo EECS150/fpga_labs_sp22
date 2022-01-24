@@ -1,6 +1,6 @@
 # FPGA Lab 2: Introduction to FPGA Development
 <p align="center">
-Prof. Bora Nikolic
+Prof. Sophia Shao
 </p>
 <p align="center">
 TAs: Alisha Menon, Yikuan Chen, Seah Kim
