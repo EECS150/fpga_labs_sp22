@@ -265,9 +265,13 @@ For Linux, set the execute bit `chmod +x Xilinx_Unified_2021.1_0610_2318_Lin64.b
 
 In the installer, select "Vivado" in the "Select Product to Install" screen, pick "Vivado ML Standard" in the "Select Edition to Install" screen, and check the boxes to only install support for the Zynq-7000 part.
 
+
 <p align=center>
 <img src="./figs/vivado_options.png" width=400/>
 </p>
+
+##### Manually adding Pynq-z1 board support to Vivado on Windows
+If you don’t have pynq-z1 board support, you could download: https://github.com/cathalmccabe/pynq-z1_board_files, then you can paste this pynq_z1 folder to {Vivado install directory}/data/boards/board_files/ (you need to manually create /board_files folder under /boards if you don’t see one)
 
 ##### OSX
 Vivado doesn't run natively on OSX. We provide a [VirtualBox VM Image](https://berkeley.box.com/s/s4z0ykpf0tudrm9hce8fsmitpgb2khhe) containing Vivado 2019.1. 
