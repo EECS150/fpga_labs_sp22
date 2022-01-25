@@ -38,7 +38,7 @@ As we learned in previous lab, the basic I/O options on the PYNQ-Z1 board are li
 *How are we getting two 3-bit integers as inputs to the adder from the PYNQ board?*
 
 #### Makefile-Based Build Flow
-Here is an overview of the `make` targets available in the `fpga_labs_fa21/labX` folders:
+Here is an overview of the `make` targets available in the `fpga_labs_sp22/labX` folders:
 - `make lint` - Lint your Verilog with Verilator; checks for common Verilog typos, mistakes, and syntax errors
 - `make elaborate` - Elaborate (but don't synthesize) the Verilog with Vivado and open the GUI to view the schematic
 - `make synth` - Synthesize `z1top` and put logs and outputs in `build/synth`
@@ -214,7 +214,7 @@ They all take in Verilog RTL and a Verilog testbench module and output:
 
 #### VCS
 If you're using the lab machines, you should use VCS.
-Run the Makefile from `fpga_labs_fa21/lab2`
+Run the Makefile from `fpga_labs_sp22/lab2`
 ```shell
 make sim/adder_testbench.vpd
 ```
@@ -402,7 +402,7 @@ If done correctly, LEDs 0 through 3 should continually count up by 1 each second
 This process, where we use simulation to verify the functionality of a module before programming it onto the FPGA, will be the one we use throughout this semester.
 
 ## Lab Deliverables
-### Lab Checkoff (due: 11AM, Friday Sept 17th, 2021)
+### Lab Checkoff (due: next lab)
 To checkoff for this lab, have these things ready to show the TA:
   - Your FPGA, programmed with the adder circuit and with both RGB LEDs (LEDs 4 and 5) lit up showing correctness. Be ready to explain how your structural adder works.
   - A waveform of the testbench you wrote for your counter and its clock enable functionality.
