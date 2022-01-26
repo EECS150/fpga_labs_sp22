@@ -4,7 +4,7 @@ For each lab, please find the instructions at **/lab#/spec/spec.md**
 
 Lab 1: Due next lab (1/26, 1/27)
 
-Lab 2: 
+Lab 2: Due next lab (2/2, 2/3)
 
 Lab 3: 
 
