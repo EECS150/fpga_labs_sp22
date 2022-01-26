@@ -12,7 +12,7 @@ Department of Electrical Engineering and Computer Science
 College of Engineering, University of California, Berkeley
 </p>
 
-### Before You Start This Lab
+## Before You Start This Lab
 Make sure that you have gone through and completed the steps involved in Lab 1.
 Let the TA know if you are not signed up for this class on Piazza or if you do not have a class account (`eecs151-xxx`), so we can get that sorted out.
 
@@ -22,6 +22,17 @@ Go through the [Verilog Primer Slides wrong link please edit](http://inst.eecs.b
 
 Join our [class Slack workspace](https://piazza.com/class/ksp46zb1zfq1u4?cid=50).
 We will open a channel for you to ask questions live during each FPGA lab session.
+
+## If you are using your local Windows Vivado
+
+### Create a project in Vivado for this lab
+1. In the Vivado launcher, create a new project, select "RTL project". 
+2. Add all ".v" files in the "lab2/src/" folder as "design sources", add all ".v" files in the "lab2/sim/" folder as "simulation sources", and add the ".xdc" file in the "lab2/src/" folder as "constraints".
+3. Select the pynq-z1 board. **Make sure you have Pynq-z1 board support.** If you don’t have pynq-z1 board support, you could download: https://github.com/cathalmccabe/pynq-z1_board_files, then you can paste this pynq_z1 folder to {Vivado install directory}/data/boards/board_files/ (you need to manually create /board_files folder under /boards if you don’t see one)
+
+### Some simulation and synthesis steps will be different from Linux
+1. We will use the GUI Vivado to do simulation, synthesis, implementation, bitstream generating and programming, **not the makefile**.
+2. Vivado doesn't recognize some code in the testbenches, and those need to be commented out (see below)
 
 ## A Structural and Behavioral Adder Design
 
@@ -136,7 +147,7 @@ structural_adder sa (
 );
 ```
 
-Now we instantiate the DUT and connect its ports to the nets we have declared in our testbench.
+Now we instantiate the DUT and connect its ports to the nets we have declared in our testbench. **If you use Vivado on windows, please comment out the following code section**
 
 ```verilog
 initial begin
@@ -207,6 +218,7 @@ There are 2 RTL simulators we can use:
 - **VCS** - proprietary, only available on lab machines, fast
 <!-- - **XSIM** - free, bundled with Vivado, somewhat slower -->
 - **Icarus Verilog** - open source, runs on Windows/OSX/Linux, somewhat slower
+- **Your local Vivado on Windows** - In the leftmost column of Vivado, you will find Run Simulation
 
 They all take in Verilog RTL and a Verilog testbench module and output:
 - A waveform file (.vpd, .vcd, .fst) that plots each signal in the testbench and DUT across time
@@ -254,6 +266,9 @@ You can also install Icarus Verilog and gtkwave on your laptop via Homebrew ([iv
 
 Run `make sim/adder_testbench.fst` to launch a simulation with Icarus and to produce a FST waveform file.
 You can open the FST by running `gtkwave sim/adder_testbench.fst &` locally or on the lab machines.
+
+#### Your local Vivado on Windows
+In the leftmost column of Vivado, you will find Run Simulation. Right click it and click "simulation settings". Make sure you enter the desired simulation time. Then, right click Run Simulation and run it. After the simulation is finished, a waveform tab will appear next to your code tabs.
 
 ### Analyzing the Waveform
 Open the waveform file using DVE or `gtkwave`.
