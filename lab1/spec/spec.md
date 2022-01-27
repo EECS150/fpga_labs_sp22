@@ -270,8 +270,17 @@ In the installer, select "Vivado" in the "Select Product to Install" screen, pic
 <img src="./figs/vivado_options.png" width=400/>
 </p>
 
-##### Manually adding Pynq-z1 board support to Vivado on Windows
-If you don’t have pynq-z1 board support, you could download: https://github.com/cathalmccabe/pynq-z1_board_files, then you can paste this pynq_z1 folder to {Vivado install directory}/data/boards/board_files/ (you need to manually create /board_files folder under /boards if you don’t see one)
+#### If you are using your local Windows Vivado
+
+##### Create a project in Vivado for this lab
+1. In the Vivado launcher, create a new project **outside of your github folder**, select "RTL project". 
+2. Add all ".v" files in the "lab2/src/" folder as "design sources", add all ".v" files in the "lab2/sim/" folder as "simulation sources", and add the ".xdc" file in the "lab2/src/" folder as "constraints".
+3. Select the pynq-z1 board. **Make sure you have Pynq-z1 board support.** If you don’t have pynq-z1 board support, you could download: https://github.com/cathalmccabe/pynq-z1_board_files, then you can paste this pynq_z1 folder to {Vivado install directory}/data/boards/board_files/ (you need to manually create /board_files folder under /boards if you don’t see one)
+
+##### Some simulation and synthesis steps will be different from Linux
+1. We will use the GUI Vivado to do simulation, synthesis, implementation, bitstream generating and programming, **not the makefile**.
+2. Vivado doesn't recognize some code in the testbenches, and those need to be commented out (see below)
+
 
 ##### OSX
 Vivado doesn't run natively on OSX. We provide a [VirtualBox VM Image](https://berkeley.box.com/s/s4z0ykpf0tudrm9hce8fsmitpgb2khhe) containing Vivado 2019.1. 
