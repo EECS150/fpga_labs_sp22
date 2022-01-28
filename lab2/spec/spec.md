@@ -85,6 +85,16 @@ Typically, this is done before putting our design on the FPGA, but because the a
 To do this, we will need to use a *Verilog testbench*.
 A Verilog testbench is designed to test a Verilog module by supplying it with the inputs it needs (stimulus signals) and testing whether the outputs of the module match what we expect.
 
+### If you are running Vivado on Windows
+Unfortunately there's compatibility issue with assert() and ```$vcdpluson/off``` on Verilog in newest versions of Vivado. Also, we're not using iVerilog on Windows, so there are some changes you have to do:
+1. In your github folder for lab2/sim/, change "xxx.v" (testbench name) to "xxx.sv" (SystemVerilog file type, where assertion is supported for Vivado) and add it to your project.
+2. Comment out the lines in testbench
+```
+`ifndef IVERILOG
+$vcdpluson/off
+`endif
+
+
 ### Overview of Testbench Skeleton
 Check the provided testbench skeleton in `lab2/sim/adder_testbench.v`.
 Let's go through what every line of this testbench does.
