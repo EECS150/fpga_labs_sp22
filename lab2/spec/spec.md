@@ -89,7 +89,7 @@ A Verilog testbench is designed to test a Verilog module by supplying it with th
 Unfortunately there's compatibility issue with assert() and ```$vcdpluson/off``` on Verilog in newest versions of Vivado. Also, we're not using iVerilog on Windows, so there are some changes you have to do:
 1. In your github folder for lab2/sim/, change "xxx.v" (testbench name) to "xxx.sv" (SystemVerilog file type, where assertion is supported for Vivado) and add it to your project.
 2. Comment out the lines in testbench
-```
+```verilog
 `ifndef IVERILOG
     $vcdpluson/off
 `endif
