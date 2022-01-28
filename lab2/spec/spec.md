@@ -91,9 +91,9 @@ Unfortunately there's compatibility issue with assert() and ```$vcdpluson/off```
 2. Comment out the lines in testbench
 ```
 `ifndef IVERILOG
-$vcdpluson/off
+    $vcdpluson/off
 `endif
-
+```
 
 ### Overview of Testbench Skeleton
 Check the provided testbench skeleton in `lab2/sim/adder_testbench.v`.
