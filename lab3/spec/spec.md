@@ -15,16 +15,16 @@ College of Engineering, University of California, Berkeley
 ## Before You Begin
 ### Fetch Latest Lab Skeleton
 ```shell
-cd fpga_labs_fa21
+cd fpga_labs_sp22
 git pull origin master
 ```
 
 ### Verilog Reading
 Look through these documents if you haven't already.
 
-- [Verilog Primer Slides](https://inst.eecs.berkeley.edu/~eecs151/fa21/files/verilog/Verilog_Primer_Slides.pdf) - overview of the Verilog language
-- [wire vs reg](https://inst.eecs.berkeley.edu/~eecs151/fa21/files/verilog/wire_vs_reg.pdf) - the differences between `wire` and `reg` nets and when to use each one
-- [always @ blocks](https://inst.eecs.berkeley.edu/~eecs151/fa21/files/verilog/always_at_blocks.pdf) - understanding the differences between the two types of `always @` blocks and what they synthesize to
+- [Verilog Primer Slides](https://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/Verilog_Primer_Slides.pdf) - overview of the Verilog language
+- [wire vs reg](https://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/wire_vs_reg.pdf) - the differences between `wire` and `reg` nets and when to use each one
+- [always @ blocks](https://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/always_at_blocks.pdf) - understanding the differences between the two types of `always @` blocks and what they synthesize to
 
 ## Overview
 In this lab we will:
@@ -347,7 +347,7 @@ Use the standard flow to **generate a bitstream**.
 Use `SWITCHES[1]` to toggle the sound on and off.
 
 ## Lab Deliverables
-### Lab Checkoff (due: 11AM, Friday Sept 24th, 2021)
+### Lab Checkoff (due: next lab)
 To checkoff for this lab, have these things ready to show the TA:
   - A counter testbench and its waveform
   - A functioning button parser that you can use to control the counter in running and static mode
@@ -369,3 +369,4 @@ This lab is the result of the work of many EECS151/251 GSIs over the years inclu
 - Fa20: Charles Hong, Kareem Ahmad, Zhenghan Lin
 - Sp21: Sean Huang, Tan Nguyen
 - Fa21: Vighnesh Iyer, Charles Hong, Zhenghan Lin, Alisha Menon
+- Sp22: Alisha Menon, Yikuan Chen, Seah Kim
