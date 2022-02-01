@@ -3,7 +3,7 @@
 Prof. Bora Nikolic
 </p>
 <p align="center">
-TAs: Alisha Menon, Zhenghan Lin, Charles Hong, Vighnesh Iyer
+TAs: Alisha Menon, Yikuan Chen, Seah Kim
 </p>
 <p align="center">
 Department of Electrical Engineering and Computer Science
