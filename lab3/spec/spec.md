@@ -254,6 +254,11 @@ Then **look** at `src/counter.v` which implements a simple up/down counter contr
 **Run the FPGA build flow** to put the counter on the FPGA and verify it works as expected.
 You may get some `%Warning-WIDTH` errors in your `debouncer` from running `make lint`: these can be safely ignored if they involve the module parameters.
 
+#### For Windows Users
+You may need to change `rtoi` to `floor` instead in `src/z1top.v`
+
+**Look** at `src/button_parser.v` which combines the synchronizer, debouncer, and edge detector in a chain.
+
 #### Counter Testbench
 **Write** a testbench from scratch for `counter.v` in `sim/counter_tb.v`.
 Make sure you use asserts or `$error` statements that verify the correct functionality.
