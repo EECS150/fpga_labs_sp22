@@ -1,9 +1,9 @@
 # FPGA Lab 4: Tunable Wave Generator, NCO, FSMs, RAMs
 <p align="center">
-Prof. Bora Nikolic
+Prof. Sophia Shao
 </p>
 <p align="center">
-TAs: Alisha Menon, Zhenghan Lin, Charles Hong, Vighnesh Iyer
+TAs: Alisha Menon, Yikuan Chen, Seah Kim
 </p>
 <p align="center">
 Department of Electrical Engineering and Computer Science
@@ -16,7 +16,7 @@ College of Engineering, University of California, Berkeley
 
 ### Fetch Latest Lab Skeleton
 ```shell
-cd fpga_labs_fa21
+cd fpga_labs_sp22
 git pull origin master
 ```
 
@@ -28,8 +28,8 @@ cp lab3/src/synchronizer.v lab3/src/debouncer.v lab3/src/edge_detector.v lab4/sr
 ### Reading
 Look through these documents if you haven't already.
 
-- [Verilog Primer Slides](https://inst.eecs.berkeley.edu/~eecs151/fa21/files/verilog/Verilog_Primer_Slides.pdf) - overview of the Verilog language
-- [FSM](https://inst.eecs.berkeley.edu/~eecs151/fa21/files/verilog/verilog_fsm.pdf) - Finite State Machines in Verilog
+- [Verilog Primer Slides](https://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/Verilog_Primer_Slides.pdf) - overview of the Verilog language
+- [FSM](https://inst.eecs.berkeley.edu/~eecs151/sp22/files/verilog/verilog_fsm.pdf) - Finite State Machines in Verilog
 
 ## Overview
 In this lab we will:
@@ -265,7 +265,7 @@ Plug headphones into the audio out port, press the reset button, and verify that
 Use the buttons to switch between different states.
 
 ## Lab Deliverables
-### Lab Checkoff (due: 11AM, Friday Oct 1st, 2021)
+### Lab Checkoff (due: next lab)
 To checkoff for this lab, have these things ready to show the TA:
   - Demonstrate the tunable square wave generator on the FPGA (reset, linear/exponential frequency adjustment)
   - Demonstrate the FSM on the FPGA (FSM with play, reverse play, pause, edit, and reset)
@@ -287,3 +287,4 @@ This lab is the result of the work of many EECS151/251 GSIs over the years inclu
 - Fa20: Charles Hong, Kareem Ahmad, Zhenghan Lin
 - Sp21: Sean Huang, Tan Nguyen
 - Fa21: Charles Hong, Vighnesh Iyer, Alisha Menon, Zhenghan Lin
+- Sp22: Alisha Menon, Yikuan Chen, Seah Kim
