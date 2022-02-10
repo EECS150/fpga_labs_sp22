@@ -49,13 +49,13 @@ In lab 3, we built a simple square wave generator which can emit a fixed 440Hz s
 
 ### Implementation
 Support 2 modes of frequency adjustment:
-  - *Linear*: increase the frequency of the square wave linearly using the `STEP` parameter to determine how much to adjust the square wave period for every button press
-  - *Exponential*: double or halve the frequency of the square wave for every button press (*hint*: use bitshifts)
+  - *Linear Period Adjustment*: increase the frequency of the square wave linearly using the `STEP` parameter to determine how much to adjust the square wave period for every button press
+  - *Exponential Period Adjustment*: double or halve the period of the square wave for every button press (*hint*: use bitshifts)
 
 Use the button inputs as follows:
-  - `button[0]` to increase the square wave frequency
-  - `button[1]` to decrease the square wave frequency
-  - `button[2]` to switch between the 2 modes of frequency adjustment
+  - `button[0]` to increase the square wave frequency (decrease period)
+  - `button[1]` to decrease the square wave frequency (increas period)
+  - `button[2]` to switch between the 2 modes of frequency adjustment (linear period step/exponential)
 
 Use `leds[0]` to display the frequency adjustment mode. The other `leds` can be set as you wish.
 
@@ -72,12 +72,12 @@ reg [4:0] counter = 0;
 // Explicit reset - Do this
 reg [4:0] counter;
 always @(posedge clk) begin
-  if (rst) counter <= 0;
+  if (rst) counter <= 0; // counte value will be undefined before rst. This is what we want.
 end
 ```
 
 Use your solution from lab 3 to **implement the new square wave generator** in `src/sq_wave_gen.v`.
-You should support a square wave frequency range from 20 Hz to 10 kHz.
+You should support a square wave frequency range from 20 Hz to 10 kHz. (hint: calculate the corresponding period...)
 
 ### Verification
 **Extend the testbench** in `sim/sq_wave_gen_tb.v` to verify the reset and frequency adjustment functionality of your `sq_wave_gen`.
@@ -97,7 +97,7 @@ play output.wav
 
 ### FPGA
 Look at `src/z1top.v` to see how the new `sq_wave_gen` is connected.
-Use `SWITCHES[1]` to turn the audio output on and off, and keep `SWITCHES[0]` low to use the `sq_wave_gen` module to drive the DAC.
+Use `SWITCHES[1]` to turn the audio output on/off, and keep `SWITCHES[0]` low to use the `sq_wave_gen` module to drive the DAC.
 
 Use `make impl` and `make program` to **put the circuit on the FPGA and test it**.
 
@@ -114,19 +114,19 @@ Now we can generate tunable square waves using `sq_wave_gen`, but 1) they sound 
 Let's use a numerically controlled oscillator (NCO) to generate sine waves.
 Here's the math involved:
 
-A continuous time sine wave, with a frequency <img src="https://render.githubusercontent.com/render/math?math=f_{sig}">, can be written as:
+A **continuous time** sine wave, with a frequency <img src="https://render.githubusercontent.com/render/math?math=f_{sig}">, can be written as:
 
 <p align=center>
 <img height=20 src="https://render.githubusercontent.com/render/math?math=f(t) = sin(2 \pi f_{sig} t)">
 </p>
 
-If this sine wave is sampled with sampling frequency <img src="https://render.githubusercontent.com/render/math?math=f_{samp}"> (<img src="https://render.githubusercontent.com/render/math?math=f_{samp} = 125e6 / 1024 = 122 kHz"> in our case), the resulting stream of discrete time samples is:
+If this sine wave is sampled with sampling frequency (so the audio could be stored as a bunch of numbers)<img src="https://render.githubusercontent.com/render/math?math=f_{samp}"> (<img src="https://render.githubusercontent.com/render/math?math=f_{samp} = 125e6 / 1024 = 122 kHz"> in our case), the resulting stream of discrete time samples is:
 
 <p align=center>
 <img height=30 src="https://render.githubusercontent.com/render/math?math=f[n] = sin (2 \pi f_{sig} \frac{n}{f_{samp}})">
 </p>
 
-We want to generate this stream of samples in hardware. One way to do this is to use a lookup table (LUT) and a phase accumulator (PA, just a register and an adder).
+We want to let our hardware output such stream of samples. One way to do this is to use a **lookup table (LUT)** and a **phase accumulator** (PA, just a register that can increment its value).
 
 Say we have a LUT that contains sampled points for one period of a sine wave with <img src="https://render.githubusercontent.com/render/math?math=2^N"> entries. The entries `i` <img src="https://render.githubusercontent.com/render/math?math=0 \leq i \leq 2^N"> of this LUT are:
 
@@ -134,7 +134,7 @@ Say we have a LUT that contains sampled points for one period of a sine wave wit
 <img height=30 src="https://render.githubusercontent.com/render/math?math=LUT[i] = sin(i \frac{2\pi}{2^N})">
 </p>
 
-To find the mapping of the sample n to the LUT entry i, we can equate the expressions inside <img src="https://render.githubusercontent.com/render/math?math=sin()">:
+To find the index ***i*** of the LUT that stores the ***n-th sample***, we can equate the expressions inside <img src="https://render.githubusercontent.com/render/math?math=sin()">:
 
 <p align=center>
 <img height=40 src="https://render.githubusercontent.com/render/math?math=i \frac{2 \pi}{2^N} = 2 \pi f_{sig} \frac{n}{f_{samp}}">
@@ -143,9 +143,9 @@ To find the mapping of the sample n to the LUT entry i, we can equate the expres
 <img height=60 src="https://render.githubusercontent.com/render/math?math=i = \underbrace{\left(\frac{f_{sig}}{f_{samp}} 2^N \right)}_{\text{phase increment}} n">
 </p>
 
-This means that to compute sample `n+1` for a given <img src="https://render.githubusercontent.com/render/math?math=f_{sig}">, we should take the LUT index used for sample `n` and increment the index by the **phase increment** (also called the **frequency control word (FCW)**).
+This means that to calculate sample `n+1` for a given <img src="https://render.githubusercontent.com/render/math?math=f_{sig}">, we should take the LUT index ***i*** that corresponds to sample `n` and increment the index by the **frequency control word (FCW)** (also called the **phase increment** in the equation above).
 
-To find the frequency resolution (the minimum frequency step of the NCO) we can look at what change in <img src="https://render.githubusercontent.com/render/math?math=f_{sig}"> causes the phase increment to increase by 1:
+To find the frequency step, <img src="https://render.githubusercontent.com/render/math?math=\Delta_{f,min}"> , of the NCO (a.k.a frequency resolution) we can look at how much of a change in <img src="https://render.githubusercontent.com/render/math?math=f_{sig}"> could cause the FCW, or phase increment, to increase by 1:
 
 <p align=center>
 <img height=40 src="https://render.githubusercontent.com/render/math?math=\frac{f_{sig} %2B \Delta_{f,min}}{f_{samp}} 2^N = \frac{f_{sig}}{f_{samp}}2^N %2b 1">
@@ -154,9 +154,9 @@ To find the frequency resolution (the minimum frequency step of the NCO) we can 
 <img height=40 src="https://render.githubusercontent.com/render/math?math=\Delta_{f,min} = \frac{f_{samp}}{2^N}">
 </p>
 
-In this lab we will use `N=24`. Recall that in lab 3, our DAC has a frequency of `122kHz`, which means the frequency resolution is `0.007Hz`. We can have very precise frequency control using an NCO.
+In the equaltion above, <img src="https://render.githubusercontent.com/render/math?math={2^N}"> is th total number of frequencies we could represent using N bits. In this lab we will use `N=24`. Recall that in lab 3, our DAC has a frequency of `122kHz`, which means the frequency resolution is `0.007Hz`. We can have very precise frequency control using an NCO.
 
-However, a <img src="https://render.githubusercontent.com/render/math?math=2^{24}"> entry LUT is huge and wouldn't fit on the FPGA. So, we will keep the phase accumulator `N` (24-bits) wide, and only use the MSB `M` bits to index the sine wave LUT. This means the LUT only contains <img src="https://render.githubusercontent.com/render/math?math=2^M"> entries, where `M` can be chosen based on the required phase error. We will use `M = 8` in this lab.
+However, a <img src="https://render.githubusercontent.com/render/math?math=2^{24}"> entry LUT is huge and wouldn't fit on the FPGA. So, we will keep the phase accumulator `N` (24-bits) wide, and only use the MSB `M` bits to index the sine wave LUT. This means the LUT only contains <img src="https://render.githubusercontent.com/render/math?math=2^M"> entries, where `M` can be chosen based on the tolerable phase error. **We will use `M = 8` in this lab.**
 
 ### NCO Implementation
 We’ve generated a file that contains the contents of the LUT for you in `src/sine.bin`. You can run the following command to re-generate it:
@@ -171,6 +171,7 @@ initial begin
     $readmemb("sine.bin", sine_lut);
 end
 ```
+If you are running a simulation in GUI Vivado, you must add this file to sim sources.
 
 **Implement** the NCO in `src/nco.v`. Note that the PA uses the main clock and runs at 125MHz.
 When `next_sample` is high, you should output a new DAC code on `out` on the next rising clock edge, similar to the `sq_wave_gen`.
@@ -189,7 +190,10 @@ You can use the same script to convert the sample outputs to an audio file.
 play output.wav
 ```
 
-Verify the simulated output sounds like a [pure sine tone at 440 Hz](https://www.szynalski.com/tone-generator/).
+### If you are on Windows
+You could use any python tool (recommend PyCharm) to run the script above. Then just use any media player to play the .wav file.
+
+Verify the simulated output sounds like a [pure sine tone at 440 Hz](https://www.szynalski.com/tone-generator/) rather than the harsh sound produced by a square wave generator.
 
 ### NCO on FPGA
 Look through `src/z1top.v` for the instantiation of the `nco`.
@@ -241,6 +245,8 @@ Here is the state transition diagram:
 - The `EDIT` state can only be entered when the edit button (`button[2]`) is pressed in the `PAUSED` state. In the `EDIT` state, the current note should come out of the speaker continuously. Pressing `button[0]` will decrease the frequency of the current tone, while pressing `button[1]` should increase the frequency. You can decide the step at will and it doesn’t have to be linear. Pressing the edit button should transition the FSM back to the `PAUSED` stage.
 - If the FSM is reset (`rst`) it should return to the `REGULAR_PLAY` state, and the RAM should be reset to its original values.
 - If you don't press any buttons, the FSM shouldn't transition to another state.
+- Keep in mind, when doing a reset, we cannot write the current note into the ram (what should wr_en look like?)
+- Make sure your note doesn't underflow or overflow beyond the min/max frequency.
 
 The `leds` output should track which note you are playing (one-hot).
 The `leds_state` output should represent the state your FSM is in using 2 bits.
