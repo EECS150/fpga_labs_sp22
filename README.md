@@ -6,9 +6,9 @@ Lab 1: Due next lab (1/26, 1/27)
 
 Lab 2: Due next lab (2/2, 2/3)
 
-Lab 3: Due next lab (2/9,2/10) -- checkoff deadline for Lab 1,2 and 3 all on 2/9, 2/10 and 2/14, since we're back on campus
+Lab 3: Due next lab (2/9,2/10) -- checkoff deadline for Lab 1,2 and 3 all on 2/16, 2/17 and 2/23 (Monday 2/21 is an administrative holiday), since we're back on campus
 
-Lab 4: 
+Lab 4: Due next lab (2/23, 2/24 and 2/28)
 
 Lab 5: 
 
