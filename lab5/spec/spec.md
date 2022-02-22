@@ -39,6 +39,43 @@ In this lab we will:
 <!-- - Design a first-in-first-out (FIFO) circuit -->
 <!-- - Connect the FIFO and UART circuits together, bridging two ready-valid interfaces -->
 
+## Recommended Style for Writing a Finite State Machine - Two Always Blocks
+```Verilog
+module vending_machine(
+ input clk, reset,
+ input <other signals>
+ output <output signals>
+);
+//1.define state registers (state, next_state, with proper bitwidths)
+
+//2.define state names as localparams (optional but recommended to make your code clean)
+//e.g.
+localparam DEFAULT_STATE = 2'b00;
+
+//3.declare regs for output that will be produced by the combinational block
+//e.g. do this. Note that output_1_reg is still an combinational logic, not a sequential logic!
+reg output_1_reg;
+assign output_1 = output_1_reg;
+
+//4.an always@(posedge clk) block to handle state assignment
+always @ (posedge clk) begin
+  state <= next_state; // this is the only line that should be in this block. For reset, 
+end
+
+//5.an always@(*) block to handle 1) output for each state and 2) state transition logic (both of them may also depend on input)
+always @ (*) begin
+  if(reset)begin
+     next_state = DEFAULT_STATE; 
+  end else begin
+    case(state)
+      DEFAULT_STATE: ...
+      ...
+    endcase
+  end 
+end
+
+```
+
 ## Ready-Valid Interface
 Often, we want to design modules that pass data between each other but are unaware of each other's internal timing.
 The *ready-valid interface* is a standardized interface and protocol for timing-agnostic data movement between 2 modules.
