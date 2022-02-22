@@ -59,7 +59,7 @@ assign output_1 = output_1_int;
 
 //4.an always@(posedge clk) block to handle state assignment
 always @ (posedge clk) begin
-  state <= next_state; // this is the only line that should be in this block. For reset, 
+  state <= next_state; // this is the only line that should be in this block. For reset, see the combinational block below
 end
 
 //5.an always@(*) block to handle 1) output for each state and 2) state transition logic (both of them may also depend on input)
