@@ -1,9 +1,9 @@
 # FPGA Lab 5: UART (Universal Asynchronous Receiver/Transmitter)
 <p align="center">
-Prof. Bora Nikolic
+Prof. Sophia Shao
 </p>
 <p align="center">
-TAs: Alisha Menon, Zhenghan Lin, Charles Hong, Vighnesh Iyer
+TAs: Alisha Menon, Yikuan Chen, Seah Kim
 </p>
 <p align="center">
 Department of Electrical Engineering and Computer Science
@@ -15,13 +15,13 @@ College of Engineering, University of California, Berkeley
 ## Before You Begin
 ### Fetch Latest Lab Skeleton
 ```shell
-cd fpga_labs_fa21
+cd fpga_labs_sp22
 git pull origin master
 ```
 
 ### Copy Sources From Previous Lab
 ```shell
-cd fpga_labs_fa21
+cd fpga_labs_sp22
 cp lab4/src/synchronizer.v lab5/src/.
 cp lab4/src/edge_detector.v lab5/src/.
 cp lab4/src/debouncer.v lab5/src/.
@@ -252,7 +252,7 @@ You can also reboot the computer to clear all active `screen` sessions.
 
 
 ## Lab Deliverables
-### Lab Checkoff (due: 11AM, October 15th, 2021)
+### Lab Checkoff (due in two weeks from your lab section)
 To checkoff for this lab, have these things ready to show the TA:
   - Go through the UART simulation results and show that your UART behaves as expected. What do the testbenches do?
   - Demonstrate that you can type characters rapidly on the keyboard and have them echoed back in your `screen` session
@@ -289,3 +289,4 @@ This lab is the result of the work of many EECS151/251 GSIs over the years inclu
 - Fa20: Charles Hong, Kareem Ahmad, Zhenghan Lin
 - Sp21: Sean Huang, Tan Nguyen
 - Fa21: Vighnesh Iyer, Charles Hong, Zhenghan Lin, Alisha Menon
+- Sp22: Alisha Menon, Yikuan Chen, Seah Kim
