@@ -54,8 +54,8 @@ localparam DEFAULT_STATE = 2'b00;
 
 //3.declare regs for output that will be produced by the combinational block
 //e.g. do this. Note that output_1_reg is still an combinational logic, not a sequential logic!
-reg output_1_reg;
-assign output_1 = output_1_reg;
+reg output_1_int; //int for internal
+assign output_1 = output_1_int;
 
 //4.an always@(posedge clk) block to handle state assignment
 always @ (posedge clk) begin
@@ -68,7 +68,11 @@ always @ (*) begin
      next_state = DEFAULT_STATE; 
   end else begin
     case(state)
-      DEFAULT_STATE: ...
+      DEFAULT_STATE: begin
+        output_1_int = 1'b1;
+        if(input_1) next_state = ...;
+        else next_state = ...;
+      end
       ...
     endcase
   end 
