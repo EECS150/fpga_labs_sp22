@@ -10,9 +10,9 @@ Lab 3: Due next lab (2/9,2/10) -- checkoff deadline for Lab 1,2 and 3 all on 2/1
 
 Lab 4: Due next lab (2/23, 2/24 and 2/28)
 
-Lab 5: 
+Lab 5: Due next lab (3/9, 3/10, 3/14)
 
-Lab 6: 
+Lab 6: Due after spring break
 
 # Link to the Final Project for FPGA
 
