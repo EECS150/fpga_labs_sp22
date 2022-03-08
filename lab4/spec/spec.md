@@ -73,6 +73,9 @@ reg [4:0] counter = 0;
 reg [4:0] counter;
 always @(posedge clk) begin
   if (rst) counter <= 0; // counte value will be undefined before rst. This is what we want.
+  else begin
+     //...(code here)...
+  end
 end
 ```
 
