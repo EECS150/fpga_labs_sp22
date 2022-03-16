@@ -16,7 +16,7 @@ Lab 6: Due after spring break
 
 # Link to the Final Project for FPGA
 
-https://github.com/EECS150/project_skeleton_sp22
+https://github.com/EECS150/project_skeleton_sp22/
 
 # Course Website
 
